@@ -76,8 +76,8 @@
 
                 BottomSection(label: question.buttonText ?? appearance.submitButtonText) {
                     onNextQuestion(true)
-                    if let link, UIApplication.shared.canOpenURL(link) {
-                        UIApplication.shared.open(link)
+                    if let link, UIApplication.sharedSafe.canOpenURL(link) {
+                        UIApplication.sharedSafe.open(link)
                     }
                 }
             }

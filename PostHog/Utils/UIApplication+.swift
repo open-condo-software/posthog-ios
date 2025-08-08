@@ -9,8 +9,13 @@
     import UIKit
 
     extension UIApplication {
+        
+        static var sharedSafe: UIApplication {
+            return UIApplication.perform(Selector("shared")).takeUnretainedValue() as! UIApplication
+        }
+        
         static func getCurrentWindow(filterForegrounded: Bool = true) -> UIWindow? {
-            let windowScenes = UIApplication.shared
+            let windowScenes = UIApplication.sharedSafe
                 .connectedScenes
                 .compactMap { $0 as? UIWindowScene }
                 .filter {
